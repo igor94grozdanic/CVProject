@@ -4,6 +4,8 @@ var slideIndex = 1;
 var isClicked = false;
 showSlides(slideIndex);
 
+// Small change
+
 function plusSlides(n) {
     isClicked = true;
     showSlides(slideIndex += n);
