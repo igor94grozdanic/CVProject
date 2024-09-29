@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sokobanja portal - Home strana</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" 
+		content="width=device-width, 
+		         user-scalable=no, 
+				 initial-scale=1.0, 
+				 maximum-scale=1.0, 
+				 minimum-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	
+	<link rel="stylesheet" href="homeStyle.css" />
+</head>
+<body>
+    <div class="slideshow-container">
+		<div class="mySlides fade">
+				<!--<div class="track">
+					<div class="content">&nbsp; &nbsp; Klikni na sliku i poseti grad / Click on image and visit the city</div>
+				</div>-->
+            <img id="sokobanjaMainPhotoId" src="images/HomePage/Sokobanja.jpg"  onclick="goToMapPage()">
+			<!--<img id="sokobanjaMainPhotoId2" src="images/HomePage/Sokobanja2.jpg"  onclick="goToMapPage()">
+			<img id="sokobanjaMainPhotoId3" src="images/HomePage/Sokobanja3.jpg"  onclick="goToMapPage()">
+			<img id="sokobanjaMainPhotoId4" src="images/HomePage/Sokobanja4.jpg"  onclick="goToMapPage()">
+			<img id="sokobanjaMainPhotoId5" src="images/HomePage/Sokobanja5.jpg"  onclick="goToMapPage()">-->
+		</div>
+		<div class="mySlides fade">
+			<img id="sokobanjaMainPhotoId1" src="images/HomePage/Sokobanja1.jpg"  onclick="goToMapPage()">
+		</div>
+		<div class="mySlides fade">
+			<img id="sokobanjaMainPhotoId1" src="images/HomePage/Sokobanja2.jpg"  onclick="goToMapPage()">
+		</div>
+		<div id="sokobanjaTitleText" class="titletext">Test</div>
+		<div id="sokobanjaSrbText" class="text">Test description</div>
+		<div id="sokobanjaEngText" class="engtext">Test description</div>
+        <!--<div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img id="kraljevoMainPhotoId" src="images/HomePage/Kraljevo.jpg"  class="subImage" onclick="alertMessage()" style="display: block">
+			<img id="kraljevoMainPhotoId1" src="images/HomePage/Kraljevo1.jpg" class="subImage" onclick="alertMessage()">
+			<img id="kraljevoMainPhotoId2" src="images/HomePage/Kraljevo2.png" class="subImage" onclick="alertMessage()">
+			<img id="kraljevoMainPhotoId3" src="images/HomePage/Kraljevo3.jpg" class="subImage" onclick="alertMessage()">
+			<img id="kraljevoMainPhotoId4" src="images/HomePage/Kraljevo4.jpg" class="subImage" onclick="alertMessage()">
+			<img id="kraljevoMainPhotoId5" src="images/HomePage/Kraljevo5.jpg" class="subImage" onclick="alertMessage()">
+			<div id="picnicArea" class="text">Kraljevo je grad i administrativni centar Raškog okruga u centralnoj Srbiji. Nalazi se na ušću Zapadne Morave u Ibar.</div>
+			<div id="engPicnicArea" class="engtext">Kraljevo is a city and the administrative center of the Raška District in central Serbia. It is situated on the confluence of West Morava and Ibar.</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img id="belgradeMainPhotoId" src="images/HomePage/Beograd.jpg" class="subImage" onclick="alertMessage()" style="display: block">
+			<img id="belgradeMainPhotoId1" src="images/HomePage/Beograd1.jpg" class="subImage" onclick="alertMessage()">
+			<img id="belgradeMainPhotoId2" src="images/HomePage/Beograd2.jpg" class="subImage" onclick="alertMessage()">
+			<img id="belgradeMainPhotoId3" src="images/HomePage/Beograd3.jpg" class="subImage" onclick="alertMessage()">
+			<img id="belgradeMainPhotoId4" src="images/HomePage/Beograd4.jpg" class="subImage" onclick="alertMessage()">
+			<img id="belgradeMainPhotoId5" src="images/HomePage/Beograd5.jpg" class="subImage" onclick="alertMessage()">
+			<div id="waterSpring" class="text">Beograd je glavni i najnaseljeniji grad Republike Srbije i privredno, kulturno i obrazovno središte zemlje. Grad leži na ušću Save u Dunav.</div>
+			<div id="engWaterSpring" class="engtext">Belgrade is the capital and most populated city of the Republic of Serbia and the economic, cultural and educational center of the country. The city lies at the confluence of the Sava and the Danube.</div>
+        </div>
+
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
+
+		<!--<div id="city1" class="slideshow-item">
+			<img src="./images/HomePage/Sokobanja.jpg" alt="" >
+			<div class="slideshow-item-text">
+				<marquee loop="1" height="18px">Klikni na sliku i poseti grad / Click on image and visit the city</marquee>
+				<h5>Sokobanja</h5>
+				<p>Sokobanja je jedno od najpopularnijih turističkih mesta u Srbiji. Smeštena je u južnom delu Sokobanjske kotline.</p>
+			    </br>
+				<p>Sokobanja is one of the most popular tourist resorts in Serbia. It is situated in the southern part of Sokobanja valley.</p>
+			</div>
+		</div>
+
+		<div id="city2" class="slideshow-item">
+			<img src="./images/HomePage/Kraljevo.jpg" alt="">
+			<div class="slideshow-item-text">
+				<h5>Kraljevo</h5>
+				<p>Kraljevo je grad i administrativni centar Raškog okruga u centralnoj Srbiji. Nalazi se na ušću Zapadne Morave u Ibar.</p>
+			    </br>
+				<p>Kraljevo is a city and the administrative center of the Raška District in central Serbia. It is situated on the confluence of West Morava and Ibar.</p>
+			</div>
+		</div>
+
+		<div id="city3" class="slideshow-item">
+			<img src="./images/HomePage/Beograd.jpg" alt="">
+			<div class="slideshow-item-text">
+				<h5>Beograd</h5>
+				<p>Beograd je glavni i najnaseljeniji grad Republike Srbije i privredno, kulturno i obrazovno središte zemlje. Grad leži na ušću Save u Dunav.</p>
+			    </br>
+				<p>Belgrade is the capital and most populated city of the Republic of Serbia and the economic, cultural and educational center of the country. The city lies at the confluence of the Sava and the Danube.</p>
+			</div>
+		</div>-->
+	</div>
+
+	<script src="homeScript.js"></script>
+
+	<script>
+		/*$(function() {
+    		$("body").click(function() {
+				if ($("#city1").css('opacity') > 0.1){
+					window.location.href= "Map.html";
+				}
+
+				if ($("#city2").css('opacity') > 0.1 || $("#city3").css('opacity') > 0.1){
+					alert('Grad nije trenutno dostupan / The city is not available now');
+				}
+   			 });
+		});*/
+	</script>
+</body>
+</html>

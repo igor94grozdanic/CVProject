@@ -1,0 +1,576 @@
+/*#region global CSS settings*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+a {
+    /* REMOVE BLUE BOX WHEN TAP ON TAB*/
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: linear-gradient(95deg, #c9d6ff, #e2e2e2); 
+    font-family: verdana, sans-serif;
+    line-height: 1.4;
+
+    padding: 0; 
+    margin: 0; 
+} 
+
+.progress {
+    background-color: #15171e;
+    height: 0px;
+    width: 70%;
+    border-radius: 5px;
+    position: relative;
+    top: 0px;
+    box-shadow: 5px -10px 12px 3px rgba(0,0,0,0.3) inset;
+    padding: 0px;
+}
+
+.fill{
+    background: linear-gradient(45deg,rgba(255,255,255,0.5) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 75%, transparent 75%, transparent);
+    background-size: 10px;
+    border-radius: 5px;
+    animation: move 1.7s linear infinite;
+}
+
+@keyframes move{
+    100%{
+        background-position: 40px 0px;
+    }
+}
+
+.a {
+    background-color: #1a8cff;
+    width: 100%;
+    height: 100%;
+}
+
+#map {
+    width: 600px;
+    height: 400px;
+}
+
+#map { 
+    height: 100%; 
+    /*width: 100vw; */
+    width: 70%; 
+    float:left; 
+    position:fixed;
+}
+
+/*#endregion */
+
+/*#region slideshow container*/
+
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover; 
+    object-position: 25%;
+}
+
+.slideshow-container {
+    width: 30%; 
+    float:right; 
+    height:100%; 
+    position:fixed;
+    margin-left: 70%;
+}
+
+.prev, .next{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.text, .engtext {
+    color: white;
+    font-size: 15px;
+    padding: 0px 12px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0px;
+    top: 95%;
+    left: 0;
+    transform: translateY(-90%);
+    background-color: rgba(0,0,0,.5);
+}
+
+.engtext {
+    visibility: hidden;
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0,0,0,.5);
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade{
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@media screen and (max-width: 767px){
+    .text, .engtext{
+        max-width: 100%;
+        padding: 0rem;
+        top: initial;
+        bottom: 0;
+        transform: initial;
+    }
+}
+
+/*.css-icon {
+	
+}*/
+
+.gps_ring {	
+    border: 4px solid rgb(0, 0, 0);
+     border-radius: 50px;
+     height: 30px;
+     width: 30x;		
+    animation: pulsate 1.5s ease-out;
+    animation-iteration-count: infinite; 
+    /*opacity: 0.0*/
+}
+
+@keyframes pulsate {
+        0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+        50% {opacity: 1.0;}
+        100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+/* responsive */
+@media only screen and (max-width:300px){
+    .prev, .next, .text, .engtext {
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .prev, .next, .text, .engtext {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width:2000px){
+    .text, .engtext {
+        font-size: 22px;
+    }
+}
+
+.slideshow-container .imagePanel{
+    width: 100%;
+    height: 100%;
+}
+
+.slideshow-container .imagePanel .imageClass{
+    width: 100%;
+    height: 100%;
+    object-fit:cover; 
+    object-position: 25%;
+}
+
+.slideshow-container .btn {
+    position: absolute;
+    bottom: 50px;
+    left: 2%;
+    top: 50%;
+    width: 15px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    border: none;
+    cursor: pointer;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/*#endregion */
+
+/*#region toggle menu classes */
+
+#block_container
+{
+    text-align:center;
+}
+#bloc1, #bloc2
+{
+    display:inline;
+}
+
+.container {
+    height: 100%;
+    width: 90px;
+    position: absolute;
+    background: #161616;
+    z-index: 1;
+    transition: 0.5s ease;
+    transform: translateX(-90px);
+    top: -13px;
+}
+
+
+.container .head {
+    /*width: 74px;
+    color: #fbfdce;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    background: linear-gradient(30deg,#df0155,#ed4901);
+    margin-top: -28px;*/
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 40px;
+
+    background: #EAEEE5;
+    border-radius: 5px;
+}
+
+.toggleMenu {
+    width: 100%;
+    margin-top: 50px;
+    list-style: none;
+}
+
+.toggleMenu li {
+    display: block;
+    width: 100%;
+}
+
+.toggleMenu li .buttonClass {
+    color: #034efc;
+    /*padding: 15px 0px;*/
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden;
+    text-transform: capitalize;
+    background: transparent;
+    border:none;
+    margin-left:-8px;
+    border-radius: 5px;
+}
+
+.toggleMenu li .buttonClass i {
+    width: 70px;
+    font-size: 25px;
+    text-align: center;
+    padding-left: 8px;
+}
+
+.toggleMenu li:hover .buttonClass{
+    /*background: #030303;*/
+    color: #00eaff;
+    letter-spacing: 5px;
+}
+
+/*input {
+    -webkit-appearance: none;
+    visibility: hidden;
+    display: none;
+}*/
+
+#check {
+    display: none;
+}
+
+span{
+    position: absolute;
+    right: -30px;
+    top: 30px;
+    font-size: 25px;
+    border-radius: 3px;
+    color: #fff;
+    padding: 3px 8px;
+    cursor: pointer;
+    background: #000;
+}
+
+.menuIcons {
+    /*background: red;
+    margin-top: -28px;
+    height: 35px;*/
+
+    margin-top: 0px;
+    margin-left: 0px;
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 40px;
+
+    background: #EAEEE5;
+    border-radius: 5px;
+    border: 1px solid #3E7E55;
+}
+
+#bars {
+    /*background: red;
+    margin-top: -28px;
+    height: 35px;*/
+
+    margin-top: -28px;
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 40px;
+
+    background: #EAEEE5;
+    border-radius: 5px;
+}
+
+#times {
+    /*margin-top: -28px;
+    height: 35px;*/
+    background: transparent;
+    margin-top: -28px;
+    box-sizing: border-box;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 5px;
+}
+
+#check:checked ~ .container{
+    transform: translateX(0);
+}
+
+#check:checked ~ .container #bars{
+    display: none;
+}
+
+/*#endregion */
+
+/*#region panel classes */
+
+.mapLegendContainer,
+.layersContainer {
+    /*height: 560px;
+    width: 270px;
+    position: absolute;
+    background: #f0ecec;
+    z-index: 1;
+    visibility: hidden;
+    margin-left: 40px;
+    margin-top: 40px;
+    border-radius: 3px;*/
+    /*border-style:thin;
+    border-color: black;*/
+    /*border: 1px solid black;*/
+
+    z-index: 1;
+    visibility: hidden;
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 262px;
+    height: 623px;
+    left: 40px;
+    top: 28px;
+
+    background: #EAEEE5;
+    border: 0.5px solid #3E7E55;
+    box-shadow: 2px 4px 4px #3E7E55;
+    border-radius: 6px;
+}
+
+.languagesContainer {
+    /*height: 60px;
+    width: 146px;
+    position: absolute;
+    background: #f0ecec;
+    z-index: 1;
+    visibility: hidden;
+    margin-left: 35px;
+    margin-top: 200px;
+    border-radius: 3px;*/
+    /*border-style:thin;
+    border-color: black;*/
+    /*border: 1px solid black;*/
+
+    z-index: 1;
+    visibility: hidden;
+    margin-left: 35px;
+    margin-top: 200px;
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 70px;
+    height: 40px;
+    left: 0px;
+    top: -13px;
+
+    background: #EAEEE5;
+    border: 1px solid #3E7E55;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    display: flex;
+}
+
+.layersContainer label {
+    /*padding: 15px 10px 10px 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #0d53fb;
+    font-weight: bold;*/
+    position: absolute;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    margin-left: 52px;
+    margin-top: 13px;
+
+    color: #3E7E55;
+}
+
+input.form-check-input {
+    width : 32px;
+    height : 32px;
+    margin-left: 6px;
+    margin-top: 6px;
+    /*content: url("images/MapPage/MenuIcons/EmptyCheckBoxIcon.png");*/
+    
+    /*position: absolute;
+    width: 32px;
+    height: 32px;
+    margin-left: 40px;
+    margin-top: 22px;*/
+
+    background: #EAEEE5;
+    border: 0.5px solid #7ABD87;
+    border-radius: 3px;
+}
+
+.form-check-label {
+    margin-top: 10px;
+}
+
+.layersContainerImages {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-left: 6px;
+    margin-top: 3px;
+}
+
+.mapLegendContainer img {
+    width: 100%;
+    height: 100%;
+}
+
+.image-flag {
+    margin-left: 2px;
+    margin-right: 13px;
+    margin-top: -7px;
+    margin-bottom: -7px;
+}
+
+/* Geocoder classes*/
+
+.leaflet-touch .leaflet-control-geocoder-icon{
+    width: 35px;
+    height: 35px;
+}
+
+.form-control {
+    width: 35px;
+    height: 35px;
+    top: -9px;
+}
+
+/*#endregion */
+
+/*#region locations panel classes */
+
+.showHideLocations {
+    width:35px; 
+    height:35px; 
+    border:none;
+}
+
+/* marker locations classes */
+
+.foobar{
+    visibility: hidden;
+}
+
+.blinking {
+    /*animation: fade 1s infinite alternate; */
+    animation: pulse 1s linear infinite;
+  }
+
+/*#endregion */

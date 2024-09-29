@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sokobanja portal</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+	<!-- stylesheets  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+	
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="mapStyle.css" />
+</head>
+<body>
+	<!-- progress bar div -->
+	<!--<div id="divProgressBar" class="progress">
+		<div id="progressBar" title="Učitavanje Zona i Puteva" class="fill a"></div>
+	</div> -->
+
+	<!-- map div  -->
+	<div id='map'></div>
+
+	<!-- locations panel div  -->
+	<div id="locationPanel" class="slideshow-container">
+		<!-- <div class="imagePanel">
+			<img id="locationImage" src="images/Sokobanja/1/Skola_Mitropolit_Mihailo/Skola_Mitropolit_Mihailo.jpg" class="imageClass">
+			<div>
+				<h4 id="locationImageHeader" class="text-block">Škola "Mitropolit Mihailo"</h4>
+				<p id="locationImageText" style="visibility: hidden;"></p>
+				<p id="locationIdText" style="visibility: hidden;">1</p>
+			</div>
+			<button class="btn" style="background: url('./images/left-arrow-background-1.png') no-repeat; left: 5%;" onclick="minusSlides()"></button>
+			<button class="btn" style="background: url('./images/right-arrow-background.png') no-repeat; left: 95%;" onclick="plusSlides()"></button>
+		</div> -->
+		<div class="mySlides fade">
+            <div class="numbertext">1 / 11</div>
+            <img src="images/Sokobanja/1/Skola_Mitropolit_Mihailo/Skola_Mitropolit_Mihailo.jpg" onclick="zoomToLocation(15, 1)" style="object-position: 5%;">
+            <div id="school" class="text">Test</div>
+			<div id="engSchool" class="engtext">Test</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 11</div>
+            <img src="images/Sokobanja/2/Izletiste_Ozren/Izletiste_Ozren.jpg" onclick="zoomToLocation(15, 12)" style="object-position: 25%;">
+			<div id="picnicArea" class="text">Test</div>
+			<div id="engPicnicArea" class="engtext">Test eng</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">3 / 11</div>
+            <img src="images/Sokobanja/2/Lepterija/Lepterija.jpg" onclick="zoomToLocation(15, 10)" style="object-position: 35%;">
+			<div id="waterSpring" class="text">Test</div>
+			<div id="engWaterSpring" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">4 / 11</div>
+            <img src="images/Sokobanja/2/Vodopad_Ripaljka/Vodopad_Ripaljka.jpg" onclick="zoomToLocation(15, 11)" style="object-position: 45%;">
+			<div id="waterfall" class="text">Test</div>
+			<div id="engWaterfall" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">5 / 11</div>
+            <img src="images/Sokobanja/4/Milosev_konak/Milosev_konak.jpg" onclick="zoomToLocation(15, 24)" style="object-position: 45%;">
+			<div id="konak" class="text">Test</div>
+			<div id="engKonak" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">6 / 11</div>
+            <img src="images/Sokobanja/5/Akva_Park_Podina/Akva_park_Podina.jpg" onclick="zoomToLocation(15, 35)" style="object-position: 45%;">
+			<div id="aquaPark" class="text">Test</div>
+			<div id="engAquaPark" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">7 / 11</div>
+            <img src="images/Sokobanja/6/Gradski_park/Gradski_park.jpg" onclick="zoomToLocation(15, 36)" style="object-position: 25%;">
+			<div id="cityPark" class="text">Test</div>
+			<div id="engCityPark" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">8 / 11</div>
+            <img src="images/Sokobanja/6/Park_Borici/Park_Borici.jpg" onclick="zoomToLocation(15, 38)" style="object-position: 5%;">
+			<div id="boriciPark" class="text">Test</div>
+			<div id="engBoriciPark" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">9 / 11</div>
+            <img src="images/Sokobanja/13/Sokograd/Crkva.jpg" onclick="zoomToLocation(15, 71)" style="object-position: 55%;">
+			<div id="church" class="text">Test</div>
+			<div id="engChurch" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">10 / 11</div>
+            <img src="images/Sokobanja/13/Sokograd/Sokograd.jpg" onclick="zoomToLocation(15, 73)" style="object-position: 55%;">
+			<div id="sokograd" class="text">Test</div>
+			<div id="engSokograd" class="engtext">Test</div>
+        </div>
+		<div class="mySlides fade">
+            <div class="numbertext">11 / 11</div>
+            <img src="images/Sokobanja/13/Tursko_kupatilo_amam/Tursko_kupatilo_amam.jpg" onclick="zoomToLocation(15, 72)" style="object-position: 35%;">
+			<div id="turkishBath" class="text">Test</div>
+			<div id="engTurkishBath" class="engtext">Test</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+	</div>
+
+	<!-- local libraries link  -->
+	<script src="./locations.js"></script>
+	<script src="./map_labels_rs.js"></script>
+	<script src="./map_labels_eng.js"></script>
+
+	<script src="./map_layer_labels_rs.js"></script>
+	<script src="./map_layer_labels_eng.js"></script>
+	<script src="./apiUrls.js"></script>
+
+	<script src="./city.js"></script>
+	<script src="./cities.js"></script>
+	<script src="./location.js"></script>
+	<script src="./locationsTest.js"></script>
+	<script src="./locationsApi.js"></script>
+	<script src="mapScript.js"></script>
+
+	<!-- jquery link  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- geocoder  -->
+	<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+	<script>
+		//#region initial JS code - document ready
+		/* functions for update page after document is ready */
+		$(document).ready(function() {
+			// Calling that async function
+			getLocationsAPI(apiUrladdress.ApiUrlLocations);
+			//getCitiesAPI(apiUrladdress.ApiUrlCity);
+
+			/* change page layouts */
+    		changeMapLegendImage();
+			changePageLayout();
+
+			/* set texts and labels on specific language */
+			const queryString = window.location.search;
+      		const urlParams = new URLSearchParams(queryString);
+
+			const languageValue = urlParams.get('language');
+			const locationLink = urlParams.get('locationLink');
+			const locationId = urlParams.get('locationId');
+			
+			/*const ssImgHeader = urlParams.get('ssImgHeader');
+			const ssImgURL = urlParams.get('ssImgURL');
+			const locationIdText = urlParams.get('locationIdText');
+			const xCoord = urlParams.get('xCoord');
+			const yCoord = urlParams.get('yCoord');
+			const locationName = urlParams.get('locationName');*/
+
+			/*if ((xCoord != "pL" && yCoord != "pL")){
+				if (locationName != "pL"){
+					createSimpleMarket(xCoord, yCoord, locationName);
+				}
+				
+				map.setView([xCoord, yCoord], 16);
+			}*/
+
+			/*if (ssImgURL != "" ) {
+				document.getElementById("locationImage").src = ssImgURL;
+				document.getElementById('locationIdText').innerHTML = locationIdText;
+			}*/
+
+			if (locationLink != "" && locationId != "" && locationLink != null && locationId != null){
+				automaticChecked = true;
+				locationTypeChecked = locationLink;
+				locationIdChecked = locationId;
+			}
+
+      		if (languageValue == "Serbian"){
+        		translateOnSerbian();
+				//showHideMarkersforLocationType(1, cityLocationsCB);
+				//document.getElementById("locationImageHeader").innerHTML = ssImgHeader;
+      		}
+      		else if (languageValue == "English"){
+        		translateOnEnglish();
+				//document.getElementById("locationImageHeader").innerHTML = ssImgHeader;
+      		}
+
+			/* set location image 
+			document.getElementById("locationImage").onclick = function() {
+				//var test = document.getElementById("locationImageText").textContent;
+				//var locationId = document.getElementById("locationIdText").textContent;
+				zoomToLocation(locationZoomLevels[slideIndex], locationId);
+      		}; */
+
+			
+			//showHideMarkersforLocationType(1, "cityLocationsCB");
+			
+			/* load WMS layers from Geoserver */
+			loadAndHideWMS(zonesGroup, wmsLayerZones);
+			loadAndHideWMS(roadsGroup, wmsLayerRoads);
+		});
+
+		/* add geocoder search */ 
+		//L.Control.geocoder().addTo(map);
+
+		//#endregion
+	</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sokobanja portal Info page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+  <link rel="stylesheet" href="infoStyle.css" />
+
+  <!-- local libraries link  -->
+  <script src="./map_info_tabs_rs.js"></script>
+  <script src="./map_info_tabs_eng.js"></script>
+  <script src="./map_layer_labels_rs.js"></script>
+  <script src="./map_layer_labels_eng.js"></script>
+
+  <script src="./map_labels_rs.js"></script>
+	<script src="./map_labels_eng.js"></script>
+  <script src="./apiUrls.js"></script>
+
+  <script src="./city.js"></script>
+	<script src="./cities.js"></script>
+	<script src="./location.js"></script>
+	<script src="./locationsTest.js"></script>
+  <script src="./locationTypes.js"></script>
+  <script src="./locationsApi.js"></script>
+
+  <script src="infoScript.js"></script>
+</head>
+
+<body>
+<header>
+  <!--<nav class="navbar">
+     <a href="#" class="nav-branding">DEV.</a> translateOnSerbian() 
+    <div class="hamburger" id="hamburgerMenuId">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav> -->
+
+  <ul class="nav-menu" id="navMenuId">
+    <li> 
+      <button id="homePageLocationButtonId" title="Vrati na početnu stranu!" class="buttonClass" onclick="location.href = 'Home.html';">
+         <img class="menuIcons" src="images/MapPage/MenuIcons/HomeIcon.svg">
+      </button>
+    </li> 
+    <li> 
+      <button id="selectLanguageButtonId" title="Izaberi jezik!" class="buttonClass" onclick="showLanguagesPanel()">
+         <img class="menuIcons" src="images/MapPage/MenuIcons/LanguageIcon.svg">
+      </button>
+    </li>
+    <li>
+      <div class="languagesContainer">
+        <button id="serbianLanguageButtonId" title="Prevedi na srpski jezik!" class="buttonClass" style="border: none; width:25px; height:25px; margin-top:7px;" onclick="translateOnSerbian()">
+            <img src="./images/Serbia-Flag-icon.svg" alt="" class="image-flag" style=" margin-left:5px; width:25px; height:25px;"></img> 
+        </button>
+        <button id="englishLanguageButtonId" title="Prevedi na engleski jezik!" class="buttonClass" style="border: none; margin-left: 5px; width:25px; height:25px; margin-top:7px;" onclick="translateOnEnglish()">
+            <img src="./images/GBR-flag-icon.svg" alt="" class="image-flag" style=" margin-left: 10px; width:25px; height:25px;"></img>
+        </button>
+    </div>
+    </li>
+    <li> 
+      <button id="mapPageLocationButtonId" title="Vrati na map stranu!" class="buttonClass" onclick="location.href = 'Map.html';" style="margin-left:-15px;">
+         <img class="menuIcons" src="images/MapPage/MenuIcons/MapIcon.svg">
+      </button>
+    </li>
+  </ul>
+
+</header>
+
+<div class="container" id="main_container">
+  <!-- panel with locations  -->
+
+  <ul id="tabPanelId" class="nav nav-pills" style="OVERFLOW-X:auto; display:flex; max-height: 115px; margin-top:60px;">
+  </ul>
+  
+  <div id="tabContentId" class="tab-content" style="OVERFLOW-Y:auto; display:flex; max-height: 500px;">
+    <div id="cityLocations" class="tab-pane fade">
+      <h2 id="cityLocationsHeader"></h2>
+        </br>
+        <div class="panel-group" id="cityLocationsPanel">
+        </div>
+    </div>
+    <div id="picnicAreas" class="tab-pane fade">
+      <h2 id="picnicAreasHeader"></h2>
+        </br>
+        <div class="panel-group" id="picnicAreasPanel">
+        </div>
+    </div>
+    <div id="waterSprings" class="tab-pane fade">
+      <h2 id="waterSpringsHeader"></h2>
+        </br>
+        <div class="panel-group" id="waterSpringsPanel">
+        </div>
+    </div>
+    <div id="culturalContent" class="tab-pane fade">
+      <h2 id="culturalContentHeader"></h2>
+        </br>
+        <div class="panel-group" id="culturalContentPanel">
+        </div>
+    </div>
+    <div id="baths" class="tab-pane fade">
+      <h2 id="bathsHeader"></h2>
+        </br>
+        <div class="panel-group" id="bathsPanel">
+        </div>
+    </div>
+    <div id="parks" class="tab-pane fade">
+      <h2 id="parksHeader"></h2>
+        </br>
+        <div class="panel-group" id="parksPanel">
+        </div>
+    </div>
+    <div id="naturalAttractions" class="tab-pane fade">
+      <h2 id="naturalAttractionsHeader"></h2>
+        </br>
+        <div class="panel-group" id="naturalAttractionsPanel">
+        </div>
+    </div>
+    <div id="childrenFacilities" class="tab-pane fade">
+      <h2 id="childrenFacilitiesHeader"></h2>
+        </br>
+        <div class="panel-group" id="childrenFacilitiesPanel">
+        </div>
+    </div>
+    <div id="sportsFacilities" class="tab-pane fade">
+      <h2 id="sportsFacilitiesHeader"></h2>
+        </br>
+        <div class="panel-group" id="sportsFacilitiesPanel">
+        </div>
+    </div>
+    <div id="thermalSprings" class="tab-pane fade">
+      <h2 id="thermalSpringsHeader"></h2>
+        </br>
+        <div class="panel-group" id="thermalSpringsPanel">
+        </div>
+    </div>
+    <div id="touristBenefits" class="tab-pane fade">
+      <h2 id="touristBenefitsHeader"></h2>
+        </br>
+        <div class="panel-group" id="touristBenefitsPanel">
+        </div>
+    </div>
+    <div id="lookouts" class="tab-pane fade">
+      <h2 id="lookoutsHeader"></h2>
+        </br>
+        <div class="panel-group" id="lookoutsPanel">
+        </div>
+    </div>
+    <div id="sights" class="tab-pane fade">
+      <h2 id="sightsHeader"></h2>
+        </br>
+        <div class="panel-group" id="sightsPanel">
+        </div>
+    </div>
+    <div id="spinner" class="spinner" style="display:none">
+      <img id="img-spinner" src="./gif/spinner.gif" alt="Loading..."/>
+    </div>
+  </div>
+</div>
+
+<script>
+  //#region initial JS code - document ready
+  $(document).ready(function(){
+      /* create tab contents */
+      var tabDivContent = createTabContent();
+      $("#tabPanelId").html(tabDivContent);
+
+      /* create main container */
+      getLocationTypesAPI(apiUrladdress.ApiUrlLocationTypes);
+      getLocationsAPI(apiUrladdress.ApiUrlLocations);
+      //$('#main_container').updateTextValues(tabValuesList, true);
+
+      /* set page layout */
+      changePageLayout();
+
+      /* set texts and labels on specific language */
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+
+      const languageValue = urlParams.get('language');
+      const cityId = urlParams.get('cityId');
+      const locationListId = urlParams.get('locationLiId');
+      const locationPanelsId = urlParams.get('locationPanelId');
+
+      if (locationListId != "pL"){
+        locationLiId = locationListId;
+      }
+
+      if (locationPanelsId != "pL"){
+        locationPanelId = locationPanelsId;
+      }
+
+      if (languageValue == "Serbian"){
+        currentLanguage = appLanguages.Serbian;
+      }
+      else if (languageValue == "English"){
+        translateOnEnglish();
+      }
+
+      /* settings for header design */
+
+      /*const hamburger = document.getElementById("hamburgerMenuId");
+      const navMenu = document.getElementById("navMenuId");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });*/
+
+      var documentHeight = $(document).height();
+      var documentWidth = $(document).width();
+      var tabContentMaxHeight = documentHeight - 150;
+
+      $('#tabContentId').css({"maxHeight": tabContentMaxHeight });
+
+      if (documentWidth < 350){
+        $(".buttonClass").width(50);
+      }
+
+      /*$('html,body').animate({
+        scrollTop: $(".second").offset().top},
+        'slow');*/
+
+      /* set even listener for resizing page elements */
+	    window.addEventListener('resize', changePageLayout);
+  });
+  
+  //#endregion
+</script>
+
+</body>
+</html>

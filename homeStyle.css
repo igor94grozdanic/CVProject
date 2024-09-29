@@ -1,0 +1,364 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    font-size: 10px;
+}
+
+body{
+    background-color: #000;
+}
+
+.slideshow{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow-item{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    opacity: 0;
+    animation: cycleImages 31s infinite;
+}
+
+/*.slideshow-item .btn {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .slideshow-item .btn:hover {
+    background-color: black;
+  }*/
+
+.slideshow-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*animation: zoom 31s infinite;*/
+}
+
+.slideshow-item:nth-child(1),
+.slideshow-item:nth-child(1) img{
+    animation-delay: 0s;
+}
+
+.slideshow-item:nth-child(2),
+.slideshow-item:nth-child(2) img{
+    animation-delay: 10s;
+}
+
+.slideshow-item:nth-child(3),
+.slideshow-item:nth-child(3) img{
+    animation-delay: 20s;
+}
+
+.slideshow-item-text{
+    max-width: 100%;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    transform: translateY(-100%);
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    padding: 1rem;
+    height: 2%;
+}
+
+.slideshow-item-text h5{
+    font-size: 4rem;
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+}
+
+.slideshow-item-text p{
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.slideshow-item-text marquee {
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+@keyframes cycleImages {
+    25%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+    }
+}
+
+@keyframes zoom {
+    100%{
+      transform: scale(1.3);
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .slideshow-item-text{
+        max-width: 70%;
+        padding: 5rem 1rem;
+    }
+
+    .slideshow-item-text h5{
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .slideshow-item-text{
+        max-width: 100%;
+        padding: 2rem;
+        top: initial;
+        bottom: 0;
+        transform: initial;
+    }
+
+    .slideshow-item-text h5{
+        font-size: 3rem;
+    }
+
+    .slideshow-item-text p{
+        font-size: 1.4rem;
+    }
+
+    .slideshow-item-text marquee{
+        font-size: 1.4rem;
+    }
+}
+
+/* Slideshow classes */
+
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover; 
+    object-position: 25%;
+    /*animation: zoom 15s infinite;*/
+}
+
+.slideshow-container {
+    width: 100%; 
+    /*float:right; */
+    height:100%; 
+    position:fixed;
+    /*margin-left: 70%;*/
+}
+
+.prev, .next{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.text, .engtext {
+    position: absolute;
+    width: 100%;
+    height: 12%;
+    left: 0;
+    top: 8%;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+
+    color: #FFFFFF; 
+    
+    transform: translateY(-90%);
+    background: rgba(62, 126, 85, 0.65);;
+}
+
+.titletext {
+    position: absolute;
+    width: 40%;
+    height: 5%;
+    left: 0;
+    top: 85%;
+
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+
+    color: #EAEEE5; 
+    
+    border: 1px solid rgba(62, 126, 85, 0.65);
+
+    transform: translateY(-90%);
+    background: rgba(62, 126, 85, 0.65);;
+}
+
+.engtext {
+    height: 12%; 
+    top: 14px;
+    background-color: rgba(62, 126, 85, 0.65);
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0,0,0,.5);
+    
+}
+
+/*.marquee {
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    height: 30px;
+    overflow-x: hidden;
+}*/
+
+.track {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 9s linear infinite;
+    background-color: rgba(0,0,0,.5);
+    color:#f2f2f2;
+    height: 4%;
+}
+
+.content {
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 300;
+    padding: 0.5rem;
+}
+
+@keyframes marquee {
+    from { transform: translate(0); }
+    to { transform: translateX(-100%); }
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 4.5s;
+    animation-name: fade;
+    animation-duration: 4.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade{
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@media screen and (max-width: 767px){
+    .text, .engtext{
+        max-width: 100%;
+        padding: 1rem;
+        top: initial;
+        bottom: 0;
+        transform: initial;
+    }
+
+    .text {
+        top: 87%;
+        height: 12%;
+    }
+
+    .engtext {
+        top: 14px;
+    }
+
+    #kraljevoMainPhotoId {
+        object-position: 50%;
+    }
+
+    #belgradeMainPhotoId {
+        object-position: 80%;
+    }
+
+    #sokobanjaMainPhotoId1 {
+        object-position: 70%;
+    }
+
+    #kraljevoMainPhotoId1 {
+        object-position: 70%;
+    }
+
+    #belgradeMainPhotoId1 {
+        object-position: 50%;
+    }
+}
+
+.text, .engtext{
+    max-width: 100%;
+    padding: 1rem;
+    top: initial;
+    bottom: 0;
+    transform: initial;
+}
+
+.text {
+    top: 87%;
+    height: 12%;
+}
+
+.engtext {
+    top: 14px;
+}
